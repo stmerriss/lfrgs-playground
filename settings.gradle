@@ -1,0 +1,29 @@
+// BEGIN Liferay Workspace plugin
+buildscript {
+	dependencies {
+		classpath group: "com.liferay", name: "com.liferay.gradle.plugins.workspace", version: "1.10.7"
+		classpath group: "net.saliman", name: "gradle-properties-plugin", version: "1.4.6"
+	}
+
+	repositories {
+		maven {
+			url "https://repository-cdn.liferay.com/nexus/content/groups/public"
+		}
+	}
+}
+
+apply plugin: "net.saliman.properties"
+
+apply plugin: "com.liferay.workspace"
+// END Liferay Workspace plugin
+
+// BEGIN WeDeploy
+println "..:: Liferay Workspace generated from archetype 'wedeploy-dxpcloud-workspace:2.0.0' ::.."
+// END WeDeploy
+
+rootProject.name = 'stm-liferay-dev'
+
+// CUSTOM BEGIN
+// Liferay Workspace EE START
+//apply from: 'gradle/liferay-workspace-ee/settings-ee.gradle'
+// Liferay Workspace EE END
