@@ -3,7 +3,6 @@ package com.lfrgs.search;
 import com.lfrgs.search.dto.CategoryDTO;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author Shane Merriss

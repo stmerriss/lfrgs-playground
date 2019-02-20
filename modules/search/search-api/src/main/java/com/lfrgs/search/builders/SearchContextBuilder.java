@@ -40,7 +40,7 @@ public class SearchContextBuilder {
 		SearchContext searchContext = new SearchContext();
 
 		searchContext.setStart(_start);
-		searchContext.setEnd(_start);
+		searchContext.setEnd(_end);
 		searchContext.setAndSearch(_andSearch);
 		searchContext.setCompanyId(_companyId);
 
