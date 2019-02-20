@@ -1,6 +1,0 @@
-Bundle-Name: TestLangPortlet
-Bundle-SymbolicName: testlangportlet
-Bundle-Version: 1.0.0
-
--liferay-aggregate-resource-bundles: \
-	com.lfrgs.language.bundle

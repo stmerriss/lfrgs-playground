@@ -1,0 +1,3 @@
+Bundle-Name: search-service
+Bundle-SymbolicName: search.service
+Bundle-Version: 1.0.0
