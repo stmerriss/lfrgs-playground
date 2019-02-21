@@ -1,0 +1,4 @@
+Bundle-Name: example-portlet
+Bundle-SymbolicName: example.portlet
+Bundle-Version: 1.0.0
+Export-Package: example.portlet.constants
