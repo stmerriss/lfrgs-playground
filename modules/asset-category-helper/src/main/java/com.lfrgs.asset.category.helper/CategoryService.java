@@ -1,6 +1,6 @@
-package com.lfrgs.search;
+package com.lfrgs.asset.category.helper;
 
-import com.lfrgs.search.dto.CategoryDTO;
+import com.lfrgs.asset.category.helper.dto.CategoryDTO;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.lfrgs.search.dto;
+package com.lfrgs.asset.category.helper.dto;
 
 import com.liferay.portal.kernel.util.OrderByComparator;
 
