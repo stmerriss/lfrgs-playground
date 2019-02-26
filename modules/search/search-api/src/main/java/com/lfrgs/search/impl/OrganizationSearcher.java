@@ -25,6 +25,20 @@ import java.util.Set;
 )
 public class OrganizationSearcher extends ModelSearcher<Organization> {
 
+	public enum OrganizationField {
+		PARENT_ORGANIZATION_ID("parentOrganizationId");
+
+		OrganizationField(String value) {
+			_value = value;
+		}
+
+		public String getValue() {
+			return this._value;
+		}
+
+		private final String _value;
+	}
+
 	public OrganizationSearcher(SearchContext searchContext, BooleanQuery searchQuery) {
 		_searchContext = searchContext;
 		_searchQuery = searchQuery;
@@ -62,7 +76,7 @@ public class OrganizationSearcher extends ModelSearcher<Organization> {
 			BooleanFilter searchFilter = new SearchFilterBuilder()
 				.addFilter(Field.NAME, _name, BooleanClauseOccur.SHOULD)
 				.addMultipleValues(Field.ORGANIZATION_ID, ArrayUtil.toLongArray(_organizationIds))
-				.addMultipleValues("parentOrganizationId", ArrayUtil.toLongArray(_parentOrganizationId))
+				.addMultipleValues(OrganizationField.PARENT_ORGANIZATION_ID.getValue(), ArrayUtil.toLongArray(_parentOrganizationId))
 				.addMultipleFields(_keywords, Field.NAME, Field.TYPE, Field.COMMENTS, Field.USER_NAME)
 				.build();
 
