@@ -1,7 +1,7 @@
 Bundle-Name: example-service-api
 Bundle-SymbolicName: example.service.api
 Bundle-Version: 1.0.0
-Export-Package:\
+Export-Package: \
 	example.service.exception,\
 	example.service.model,\
 	example.service.service,\

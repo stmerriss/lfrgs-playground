@@ -1,5 +1,6 @@
 package com.lfrgs.search.builders;
 
+import com.lfrgs.search.Builder;
 import com.liferay.portal.kernel.dao.orm.QueryUtil;
 import com.liferay.portal.kernel.search.SearchContext;
 import com.liferay.portal.kernel.util.PortalUtil;
@@ -7,7 +8,7 @@ import com.liferay.portal.kernel.util.PortalUtil;
 /**
  * @author Shane Merriss
  */
-public class SearchContextBuilder {
+public class SearchContextBuilder implements Builder<SearchContext> {
 
 	public SearchContextBuilder() {
 		_andSearch = true;

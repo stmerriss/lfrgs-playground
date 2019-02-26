@@ -1,12 +1,13 @@
 package com.lfrgs.search.builders;
 
+import com.lfrgs.search.Builder;
 import com.liferay.portal.kernel.search.BooleanClauseOccur;
 import com.liferay.portal.kernel.search.filter.BooleanFilter;
 
 /**
  * @author Shane Merriss
  */
-public class SearchFilterBuilder {
+public class SearchFilterBuilder implements Builder<BooleanFilter> {
 
 	public SearchFilterBuilder() {
 		_searchFilter = new BooleanFilter();

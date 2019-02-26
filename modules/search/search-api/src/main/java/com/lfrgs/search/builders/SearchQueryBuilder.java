@@ -1,5 +1,6 @@
 package com.lfrgs.search.builders;
 
+import com.lfrgs.search.Builder;
 import com.liferay.portal.kernel.search.BooleanClauseOccur;
 import com.liferay.portal.kernel.search.BooleanQuery;
 import com.liferay.portal.kernel.search.Field;
@@ -9,7 +10,7 @@ import com.liferay.portal.kernel.search.generic.BooleanQueryImpl;
 /**
  * @author Shane Merriss
  */
-public class SearchQueryBuilder {
+public class SearchQueryBuilder implements Builder<BooleanQuery> {
 
 	public SearchQueryBuilder(Class klass) {
 		_klass = klass;

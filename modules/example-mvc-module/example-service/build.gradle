@@ -2,7 +2,8 @@ dependencies {
 	compileOnly group: "biz.aQute.bnd", name: "biz.aQute.bndlib", version: "3.5.0"
 	compileOnly group: "com.liferay", name: "com.liferay.portal.spring.extender.api", version: "3.0.0"
 	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel", version: "3.0.0"
-	compileOnly project(":modules:example-mvc-module:example-service:example-service-api")
+
+	compileOnly project(":modules:example-mvc-module:example-api")
 }
 
 buildService {

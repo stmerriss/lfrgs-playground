@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * @author Shane Merriss
  */
-public interface Search {
+public interface Searcher<T> {
 
 	public List<Document> search();
 
