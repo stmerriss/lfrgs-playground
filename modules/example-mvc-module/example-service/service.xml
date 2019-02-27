@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.0.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_0_0.dtd">
 
-<service-builder package-path="example.service">
-	<namespace>FOO</namespace>
+<service-builder package-path="com.lfrgs.example.service.dnd">
+	<namespace>DnD</namespace>
 	<!--<entity data-source="sampleDataSource" local-service="true" name="Foo" remote-service="false" session-factory="sampleSessionFactory" table="foo" tx-manager="sampleTransactionManager uuid="true"">-->
-	<entity local-service="true" name="Foo" remote-service="true" uuid="true">
+	<entity local-service="true" name="Character" remote-service="false" uuid="true">
 
 		<!-- PK fields -->
 
-		<column name="fooId" primary="true" type="long" />
+		<column name="characterId" primary="true" type="long" />
 
 		<!-- Group instance -->
 
@@ -24,27 +24,37 @@
 
 		<!-- Other fields -->
 
-		<column name="field1" type="String" />
-		<column name="field2" type="boolean" />
-		<column name="field3" type="int" />
-		<column name="field4" type="Date" />
-		<column name="field5" type="String" />
+		<column name="level" type="int" />
+		<column name="race" type="String" />
+		<column name="characterClass" type="String" />
+		<column name="characterName" type="String" />
+
+		<column name="strength" type="int" />
+		<column name="dexterity" type="int" />
+		<column name="constitution" type="int" />
+		<column name="intelligence" type="int" />
+		<column name="wisdom" type="int" />
+		<column name="charisma" type="int" />
+
+		<column name="speed" type="int" />
+		<column name="hp" type="int" />
 
 		<!-- Order -->
 
 		<order by="asc">
-			<order-column name="field1" />
+			<order-column name="characterName" />
 		</order>
 
 		<!-- Finder methods -->
 
-		<finder name="Field2" return-type="Collection">
-			<finder-column name="field2" />
+		<finder name="ByName" return-type="Collection">
+			<finder-column name="name" />
 		</finder>
-
-		<!-- References -->
-
-		<reference entity="AssetEntry" package-path="com.liferay.portlet.asset" />
-		<reference entity="AssetTag" package-path="com.liferay.portlet.asset" />
+		<finder name="ByClass" return-type="Collection">
+			<finder-column name="class" />
+		</finder>
+		<finder name="ByRace" return-type="Collection">
+			<finder-column name="race" />
+		</finder>
 	</entity>
 </service-builder>
