@@ -1,0 +1,22 @@
+create table DND_Character (
+	mvccVersion LONG default 0 not null,
+	characterId LONG not null primary key,
+	groupId LONG,
+	companyId LONG,
+	userId LONG,
+	userName VARCHAR(75) null,
+	createDate DATE null,
+	modifiedDate DATE null,
+	level INTEGER,
+	race VARCHAR(75) null,
+	characterClass VARCHAR(75) null,
+	characterName VARCHAR(75) null,
+	strength INTEGER,
+	dexterity INTEGER,
+	constitution INTEGER,
+	intelligence INTEGER,
+	wisdom INTEGER,
+	charisma INTEGER,
+	speed INTEGER,
+	hp INTEGER
+);
