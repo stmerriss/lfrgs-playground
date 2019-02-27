@@ -22,8 +22,10 @@ public class PDFDiv extends PDFElement<PDFDiv> {
 		_verticalOrientation = isVerticalOrientation;
 	}
 
-	public void addPDFElement(PDFElement pdfElement) {
+	public PDFDiv addPDFElement(PDFElement pdfElement) {
 		_pdfElementList.addLast(pdfElement);
+
+		return this;
 	}
 
 	public void addPDFElementFirst(PDFElement pdfElement) {
