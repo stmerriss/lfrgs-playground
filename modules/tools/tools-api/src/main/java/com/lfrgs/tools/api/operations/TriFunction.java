@@ -1,4 +1,4 @@
-package com.lfrgs.tools.api;
+package com.lfrgs.tools.api.operations;
 
 /**
  * @author Andrew Betts

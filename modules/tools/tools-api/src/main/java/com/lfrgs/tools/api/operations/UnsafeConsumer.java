@@ -1,4 +1,4 @@
-package com.lfrgs.tools.api;
+package com.lfrgs.tools.api.operations;
 
 import java.util.Objects;
 

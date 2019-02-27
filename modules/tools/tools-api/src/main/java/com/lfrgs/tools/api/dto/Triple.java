@@ -1,4 +1,4 @@
-package com.lfrgs.tools.api;
+package com.lfrgs.tools.api.dto;
 
 import com.liferay.portal.kernel.util.HashUtil;
 
