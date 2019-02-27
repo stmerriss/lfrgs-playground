@@ -1,19 +1,18 @@
-package com.lfrgs.pdf.generator.api;
+package com.lfrgs.tools;
 
 import com.liferay.portal.kernel.util.HashUtil;
 
 /**
  * @author Andrew Betts
  */
-public class Triple<T> {
+public class Pair<T> {
 
-	public Triple() {
+	public Pair() {
 	}
 
-	public Triple(T first, T second, T third) {
+	public Pair(T first, T second) {
 		this.first = first;
 		this.second = second;
-		this.third = third;
 	}
 
 	public boolean equals(Object obj) {
@@ -21,15 +20,13 @@ public class Triple<T> {
 			return true;
 		}
 
-		if (!(obj instanceof Triple)) {
+		if (!(obj instanceof Pair)) {
 			return false;
 		}
 
-		Triple triple = (Triple)obj;
+		Pair pair = (Pair)obj;
 
-		if (!first.equals(triple.first) || !second.equals(triple.second) ||
-			!third.equals(triple.third)) {
-
+		if (!first.equals(pair.first) || !second.equals(pair.second)) {
 			return false;
 		}
 
@@ -44,16 +41,10 @@ public class Triple<T> {
 		return second;
 	}
 
-	public T getThird() {
-		return third;
-	}
-
 	public int hashCode() {
 		int hash = HashUtil.hash(0, first);
 
-		hash = HashUtil.hash(hash, second);
-
-		return HashUtil.hash(hash, third);
+		return HashUtil.hash(hash, second);
 	}
 
 	public void setFirst(T first) {
@@ -64,12 +55,7 @@ public class Triple<T> {
 		this.second = second;
 	}
 
-	public void setThird(T third) {
-		this.third = third;
-	}
-
 	private T first;
 	private T second;
-	private T third;
 
 }

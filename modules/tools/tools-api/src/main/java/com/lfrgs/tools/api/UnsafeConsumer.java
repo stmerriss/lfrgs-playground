@@ -1,4 +1,4 @@
-package com.lfrgs.pdf.generator.api;
+package com.lfrgs.tools.api;
 
 import java.util.Objects;
 
