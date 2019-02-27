@@ -162,11 +162,11 @@ public class PDFText extends PDFElement<PDFText> {
 		int averageCharactersPerLine = (int)Math.floor(writableWidth / averageFontWidth);
 
 		try {
-			float textWidth = _convertTextToPageUnits(
-				_pdFont.getStringWidth(text.trim()));
+			float textWidth = _convertTextToPageUnits(_pdFont.getStringWidth(text.trim()));
 
 			if (textWidth <= writableWidth) {
 				textList.add(text.trim());
+
 				return textList;
 			}
 
@@ -178,8 +178,7 @@ public class PDFText extends PDFElement<PDFText> {
 
 				textWidth = _convertTextToPageUnits(_pdFont.getStringWidth(subText));
 
-				if ((textWidth > writableWidth) &&
-					(subText.lastIndexOf(StringPool.SPACE) == -1)) {
+				if ((textWidth > writableWidth) && (subText.lastIndexOf(StringPool.SPACE) == -1)) {
 
 					textList.add(subText.substring(0, averageCharactersPerLine));
 
