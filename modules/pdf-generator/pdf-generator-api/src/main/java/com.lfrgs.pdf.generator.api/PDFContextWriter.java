@@ -34,11 +34,8 @@ public class PDFContextWriter implements AutoCloseable {
 
 	public void addNewPage() throws IOException {
 		_pdPageContentStream.close();
-
 		_pdPage = new PDPage(_pdRectangle);
-
 		_pdDocument.addPage(_pdPage);
-
 		_pdPageContentStream = new PDPageContentStream(_pdDocument, _pdPage);
 	}
 

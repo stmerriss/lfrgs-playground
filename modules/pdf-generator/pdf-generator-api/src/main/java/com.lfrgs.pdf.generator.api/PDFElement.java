@@ -27,15 +27,15 @@ public abstract class PDFElement<T extends PDFElement<T>> {
 	}
 
 	public float getMarginBottom() {
-		return getMargins()[1];
+		return getMargins()[MARGIN.BOTTOM.get()];
 	}
 
 	public float getMarginLeft() {
-		return getMargins()[2];
+		return getMargins()[MARGIN.LEFT.get()];
 	}
 
 	public float getMarginRight() {
-		return getMargins()[3];
+		return getMargins()[MARGIN.RIGHT.get()];
 	}
 
 	public float[] getMargins() {
@@ -43,7 +43,7 @@ public abstract class PDFElement<T extends PDFElement<T>> {
 	}
 
 	public float getMarginTop() {
-		return getMargins()[0];
+		return getMargins()[MARGIN.TOP.get()];
 	}
 
 	public float[] getPageMargins() {
@@ -56,8 +56,8 @@ public abstract class PDFElement<T extends PDFElement<T>> {
 
 	public float getPageWritableHeight() {
 		return getPageRectangle().getHeight()
-			- getPageMargins()[0]
-			- getPageMargins()[1];
+			- getPageMargins()[MARGIN.TOP.get()]
+			- getPageMargins()[MARGIN.BOTTOM.get()];
 	}
 
 	public abstract T getPDFElement();
@@ -75,7 +75,7 @@ public abstract class PDFElement<T extends PDFElement<T>> {
 	}
 
 	public T setBottomMargin(float bottomMargin) {
-		_margins[1] = bottomMargin;
+		_margins[MARGIN.BOTTOM.get()] = bottomMargin;
 
 		return getPDFElement();
 	}
@@ -87,16 +87,16 @@ public abstract class PDFElement<T extends PDFElement<T>> {
 	}
 
 	public T setLeftMargin(float leftMargin) {
-		_margins[2] = leftMargin;
+		_margins[MARGIN.LEFT.get()] = leftMargin;
 
 		return getPDFElement();
 	}
 
 	public T setMargins(float topMargin, float bottomMargin, float leftMargin, float rightMargin) {
-		_margins[0] = topMargin;
-		_margins[1] = bottomMargin;
-		_margins[2] = leftMargin;
-		_margins[3] = rightMargin;
+		_margins[MARGIN.TOP.get()] = topMargin;
+		_margins[MARGIN.BOTTOM.get()] = bottomMargin;
+		_margins[MARGIN.LEFT.get()] = leftMargin;
+		_margins[MARGIN.RIGHT.get()] = rightMargin;
 
 		return getPDFElement();
 	}
@@ -120,13 +120,13 @@ public abstract class PDFElement<T extends PDFElement<T>> {
 	}
 
 	public T setRightMargin(float rightMargin) {
-		_margins[3] = rightMargin;
+		_margins[MARGIN.RIGHT.get()] = rightMargin;
 
 		return getPDFElement();
 	}
 
 	public T setTopMargin(float topMargin) {
-		_margins[0] = topMargin;
+		_margins[MARGIN.TOP.get()] = topMargin;
 
 		return getPDFElement();
 	}
@@ -135,6 +135,23 @@ public abstract class PDFElement<T extends PDFElement<T>> {
 		_width = width;
 
 		return getPDFElement();
+	}
+
+	public enum MARGIN {
+		TOP(0),
+		BOTTOM(1),
+		LEFT(2),
+		RIGHT(3);
+
+		MARGIN(int value) {
+			_value = value;
+		}
+
+		public int get() {
+			return _value;
+		}
+
+		private int _value;
 	}
 
 	private static float[] _pageMargins = ArrayUtil.clone(PDFConstants.DEFAULT_DOCUMENT_MARGINS);

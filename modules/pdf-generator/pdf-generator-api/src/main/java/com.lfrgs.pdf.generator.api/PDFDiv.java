@@ -58,7 +58,7 @@ public class PDFDiv extends PDFElement<PDFDiv> {
 		if ((drawY < divHeight) && (divHeight < pageWritableHeight)) {
 			pdfContextWriter.addNewPage();
 
-			startY = pdfContextWriter.getRectangleHeight() - PDFConstants.DEFAULT_DOCUMENT_MARGINS[0];
+			startY = pdfContextWriter.getRectangleHeight() - PDFConstants.DEFAULT_DOCUMENT_MARGINS[MARGIN.TOP.get()];
 
 			drawY = startY - super.getMarginTop();
 
@@ -81,13 +81,9 @@ public class PDFDiv extends PDFElement<PDFDiv> {
 		pdfContextWriter.write(
 			(pdPageContentStream) -> {
 				pdPageContentStream.saveGraphicsState();
-
 				pdPageContentStream.setNonStrokingColor(getBorderColor());
-
 				pdPageContentStream.addRect(startX, startY, getWidth(), fillHeight);
-
 				pdPageContentStream.fill();
-
 				pdPageContentStream.restoreGraphicsState();
 			});
 	}
@@ -116,7 +112,7 @@ public class PDFDiv extends PDFElement<PDFDiv> {
 
 					drawY = pdfContextWriter.getRectangleHeight()
 						- pdfContextWriter.getHeaderPDFDiv().getHeight()
-						- PDFConstants.DEFAULT_DOCUMENT_MARGINS[0];
+						- PDFConstants.DEFAULT_DOCUMENT_MARGINS[MARGIN.TOP.get()];
 				}
 
 				drawY -= pdfElement.getHeight();
@@ -150,8 +146,8 @@ public class PDFDiv extends PDFElement<PDFDiv> {
 		float marginHeight = super.getMarginTop() + super.getMarginBottom();
 
 		if (!_verticalOrientation) {
-			return marginHeight
-				+ _pdfElementList.stream()
+			return marginHeight +
+				_pdfElementList.stream()
 					.map(PDFElement::getHeight)
 					.reduce(0f, Math::max);
 		}

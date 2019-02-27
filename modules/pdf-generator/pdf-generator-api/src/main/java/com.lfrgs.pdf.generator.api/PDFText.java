@@ -49,7 +49,6 @@ public class PDFText extends PDFElement<PDFText> {
 						}
 
 						pdPageContentStream.showText(str);
-
 						pdPageContentStream.newLineAtOffset(-tx, -leading);
 					}
 					catch (Exception e) {
@@ -74,7 +73,6 @@ public class PDFText extends PDFElement<PDFText> {
 						if (_log.isWarnEnabled()) {
 							_log.warn("unable to write text " + str, e);
 						}
-
 					}
 				}
 
@@ -94,7 +92,6 @@ public class PDFText extends PDFElement<PDFText> {
 		int lines = getTextList().size();
 
 		float totalTextHeight = lines * getFontHeight();
-
 		float totalLineSpacingHeight = getLineSpacing() * (lines - 1);
 
 		return super.getMarginTop()
@@ -160,7 +157,6 @@ public class PDFText extends PDFElement<PDFText> {
 		List<String> textList = new ArrayList<>();
 
 		float writableWidth = super.getWritableWidth();
-
 		float averageFontWidth = getAverageFontWidth();
 
 		int averageCharactersPerLine = (int)Math.floor(writableWidth / averageFontWidth);
@@ -229,9 +225,9 @@ public class PDFText extends PDFElement<PDFText> {
 
 		List<String> textList = ListUtil.toList(newLineSplitArray);
 
-		textList = textList.stream().flatMap(
-			str -> _parseTextToLength(str).stream()).collect(
-				Collectors.toList());
+		textList = textList.stream()
+			.flatMap(str -> _parseTextToLength(str).stream())
+			.collect(Collectors.toList());
 
 		return textList;
 	}
