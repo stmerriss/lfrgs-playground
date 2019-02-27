@@ -1,8 +1,5 @@
 package com.lfrgs.pdf.generator.api;
 
-import com.lfrgs.pdf.generator.api.PDFConstants;
-import com.lfrgs.pdf.generator.api.PDFContextWriter;
-import com.lfrgs.pdf.generator.api.PDFElement;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.util.ListUtil;
@@ -25,10 +22,7 @@ import org.apache.pdfbox.pdmodel.font.PDFont;
 public class PDFText extends PDFElement<PDFText> {
 
 	@Override
-	public void draw(
-		PDFContextWriter pdfContextWriter, float startX, float startY)
-		throws IOException {
-
+	public void draw(PDFContextWriter pdfContextWriter, float startX, float startY) throws IOException {
 		float drawX = startX + super.getMarginLeft();
 		float drawY = startY - super.getMarginTop() - getFontHeight();
 
@@ -47,11 +41,9 @@ public class PDFText extends PDFElement<PDFText> {
 
 					try {
 						if (isRightAlignment()) {
-							tx =
-								super.getWritableWidth() -
-									super.getMarginRight() -
-									_convertTextToPageUnits(
-										_pdFont.getStringWidth(str));
+							tx = super.getWritableWidth()
+								- super.getMarginRight()
+								- _convertTextToPageUnits(_pdFont.getStringWidth(str));
 
 							pdPageContentStream.newLineAtOffset(tx, 0f);
 						}
@@ -69,8 +61,7 @@ public class PDFText extends PDFElement<PDFText> {
 
 							if (!Objects.isNull(_pdFont.getFontDescriptor())) {
 								sb.append(", fontCharSet:");
-								sb.append(
-									_pdFont.getFontDescriptor().getCharSet());
+								sb.append(_pdFont.getFontDescriptor().getCharSet());
 							}
 
 							sb.append(", fontSize:");
@@ -92,13 +83,11 @@ public class PDFText extends PDFElement<PDFText> {
 	}
 
 	public float getAverageFontWidth() {
-		return _convertTextToPageUnits(
-			_pdFont.getFontDescriptor().getAverageWidth());
+		return _convertTextToPageUnits(_pdFont.getFontDescriptor().getAverageWidth());
 	}
 
 	public float getFontHeight() {
-		return _convertTextToPageUnits(
-			_pdFont.getFontDescriptor().getCapHeight());
+		return _convertTextToPageUnits(_pdFont.getFontDescriptor().getCapHeight());
 	}
 
 	public float getHeight() {
@@ -108,8 +97,10 @@ public class PDFText extends PDFElement<PDFText> {
 
 		float totalLineSpacingHeight = getLineSpacing() * (lines - 1);
 
-		return super.getMarginTop() + super.getMarginBottom() +
-			totalLineSpacingHeight + totalTextHeight;
+		return super.getMarginTop()
+			+ super.getMarginBottom()
+			+ totalLineSpacingHeight
+			+ totalTextHeight;
 	}
 
 	public float getLineSpacing() {
@@ -172,8 +163,7 @@ public class PDFText extends PDFElement<PDFText> {
 
 		float averageFontWidth = getAverageFontWidth();
 
-		int averageCharactersPerLine = (int)Math.floor(
-			writableWidth / averageFontWidth);
+		int averageCharactersPerLine = (int)Math.floor(writableWidth / averageFontWidth);
 
 		try {
 			float textWidth = _convertTextToPageUnits(
@@ -190,14 +180,12 @@ public class PDFText extends PDFElement<PDFText> {
 			while (lowIndex < highIndex) {
 				String subText = text.substring(lowIndex, highIndex);
 
-				textWidth = _convertTextToPageUnits(
-					_pdFont.getStringWidth(subText));
+				textWidth = _convertTextToPageUnits(_pdFont.getStringWidth(subText));
 
 				if ((textWidth > writableWidth) &&
 					(subText.lastIndexOf(StringPool.SPACE) == -1)) {
 
-					textList.add(
-						subText.substring(0, averageCharactersPerLine));
+					textList.add(subText.substring(0, averageCharactersPerLine));
 
 					lowIndex += averageCharactersPerLine;
 
@@ -224,20 +212,13 @@ public class PDFText extends PDFElement<PDFText> {
 					}
 				}
 
-				highIndex = text.substring(0, highIndex).lastIndexOf(
-					StringPool.SPACE);
+				highIndex = text.substring(0, highIndex).lastIndexOf(StringPool.SPACE);
 			}
 		}
 		catch (IOException ioe) {
-			_log.error(
-				"Cannot get string width from font. Trimming text to " +
-					"length.",
-				ioe);
+			_log.error("Cannot get string width from font. Trimming text to length.", ioe);
 
-			textList.add(
-				text.substring(
-					0,
-					Math.min(text.length() - 1, averageCharactersPerLine - 1)));
+			textList.add(text.substring(0, Math.min(text.length() - 1, averageCharactersPerLine - 1)));
 		}
 
 		return textList;

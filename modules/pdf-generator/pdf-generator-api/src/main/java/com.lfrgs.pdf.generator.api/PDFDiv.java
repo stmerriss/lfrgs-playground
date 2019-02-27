@@ -16,10 +16,7 @@ public class PDFDiv extends PDFElement<PDFDiv> {
 	public PDFDiv() {
 	}
 
-	public PDFDiv(
-		float height, float width, float[] margins,
-		boolean isVerticalOrientation) {
-
+	public PDFDiv(float height, float width, float[] margins, boolean isVerticalOrientation) {
 		super(height, width, margins);
 
 		_verticalOrientation = isVerticalOrientation;
@@ -38,10 +35,7 @@ public class PDFDiv extends PDFElement<PDFDiv> {
 	}
 
 	@Override
-	public void draw(
-		PDFContextWriter pdfContextWriter, float startX, float startY)
-		throws IOException {
-
+	public void draw(PDFContextWriter pdfContextWriter, float startX, float startY) throws IOException {
 		if (_isHeaderDiv) {
 			pdfContextWriter.setHeaderPDFDiv(this);
 		}
@@ -61,14 +55,10 @@ public class PDFDiv extends PDFElement<PDFDiv> {
 			pageWritableHeight -= headerDivHeight;
 		}
 
-		if ((drawY < divHeight) &&
-			(divHeight < pageWritableHeight)) {
-
+		if ((drawY < divHeight) && (divHeight < pageWritableHeight)) {
 			pdfContextWriter.addNewPage();
 
-			startY =
-				pdfContextWriter.getRectangleHeight() -
-					PDFConstants.DEFAULT_DOCUMENT_MARGINS[0];
+			startY = pdfContextWriter.getRectangleHeight() - PDFConstants.DEFAULT_DOCUMENT_MARGINS[0];
 
 			drawY = startY - super.getMarginTop();
 
@@ -85,9 +75,7 @@ public class PDFDiv extends PDFElement<PDFDiv> {
 		}
 	}
 
-	public void drawBorder(
-		PDFContextWriter pdfContextWriter, float startX, float startY,
-		float fillHeight)
+	public void drawBorder(PDFContextWriter pdfContextWriter, float startX, float startY, float fillHeight)
 		throws IOException {
 
 		pdfContextWriter.write(
@@ -96,8 +84,7 @@ public class PDFDiv extends PDFElement<PDFDiv> {
 
 				pdPageContentStream.setNonStrokingColor(getBorderColor());
 
-				pdPageContentStream.addRect(
-					startX, startY, getWidth(), fillHeight);
+				pdPageContentStream.addRect(startX, startY, getWidth(), fillHeight);
 
 				pdPageContentStream.fill();
 
@@ -105,10 +92,7 @@ public class PDFDiv extends PDFElement<PDFDiv> {
 			});
 	}
 
-	public void drawPDFDiv(
-		PDFContextWriter pdfContextWriter, float startX, float startY)
-		throws IOException {
-
+	public void drawPDFDiv(PDFContextWriter pdfContextWriter, float startX, float startY) throws IOException {
 		float drawX = startX + super.getMarginLeft();
 		float drawY = startY - super.getMarginTop();
 
@@ -121,6 +105,7 @@ public class PDFDiv extends PDFElement<PDFDiv> {
 		}
 
 		int pageNumber = pdfContextWriter.getNumberOfPages();
+
 		for (PDFElement pdfElement : _pdfElementList) {
 			pdfElement.draw(pdfContextWriter, drawX, drawY);
 
@@ -129,9 +114,9 @@ public class PDFDiv extends PDFElement<PDFDiv> {
 
 					pageNumber = pdfContextWriter.getNumberOfPages();
 
-					drawY = pdfContextWriter.getRectangleHeight() -
-						pdfContextWriter.getHeaderPDFDiv().getHeight() -
-						PDFConstants.DEFAULT_DOCUMENT_MARGINS[0];
+					drawY = pdfContextWriter.getRectangleHeight()
+						- pdfContextWriter.getHeaderPDFDiv().getHeight()
+						- PDFConstants.DEFAULT_DOCUMENT_MARGINS[0];
 				}
 
 				drawY -= pdfElement.getHeight();
@@ -144,8 +129,7 @@ public class PDFDiv extends PDFElement<PDFDiv> {
 		fillHeight = Math.min(getBottomBorderLineHeight(), getMarginBottom());
 
 		if (fillHeight > 0) {
-			drawBorder(
-				pdfContextWriter, startX, startY - divHeight, fillHeight);
+			drawBorder(pdfContextWriter, startX, startY - divHeight, fillHeight);
 		}
 	}
 
@@ -166,9 +150,10 @@ public class PDFDiv extends PDFElement<PDFDiv> {
 		float marginHeight = super.getMarginTop() + super.getMarginBottom();
 
 		if (!_verticalOrientation) {
-			return marginHeight +
-				_pdfElementList.stream().map(PDFElement::getHeight).reduce(
-					0f, Math::max);
+			return marginHeight
+				+ _pdfElementList.stream()
+					.map(PDFElement::getHeight)
+					.reduce(0f, Math::max);
 		}
 
 		if (_pdfElementList.isEmpty()) {
@@ -176,8 +161,9 @@ public class PDFDiv extends PDFElement<PDFDiv> {
 		}
 
 		return marginHeight +
-			_pdfElementList.stream().map(PDFElement::getHeight).reduce(
-				0f, Float::sum);
+			_pdfElementList.stream()
+				.map(PDFElement::getHeight)
+				.reduce(0f, Float::sum);
 	}
 
 	@Override

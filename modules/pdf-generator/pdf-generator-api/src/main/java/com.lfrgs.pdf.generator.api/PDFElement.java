@@ -20,9 +20,7 @@ public abstract class PDFElement<T extends PDFElement<T>> {
 		_margins = ArrayUtil.clone(margins);
 	}
 
-	public abstract void draw(
-		PDFContextWriter pdfContextWriter, float startX, float startY)
-		throws IOException;
+	public abstract void draw(PDFContextWriter pdfContextWriter, float startX, float startY) throws IOException;
 
 	public float getHeight() {
 		return _height;
@@ -57,8 +55,9 @@ public abstract class PDFElement<T extends PDFElement<T>> {
 	}
 
 	public float getPageWritableHeight() {
-		return getPageRectangle().getHeight() - getPageMargins()[0] -
-			getPageMargins()[1];
+		return getPageRectangle().getHeight()
+			- getPageMargins()[0]
+			- getPageMargins()[1];
 	}
 
 	public abstract T getPDFElement();
@@ -93,10 +92,7 @@ public abstract class PDFElement<T extends PDFElement<T>> {
 		return getPDFElement();
 	}
 
-	public T setMargins(
-		float topMargin, float bottomMargin, float leftMargin,
-		float rightMargin) {
-
+	public T setMargins(float topMargin, float bottomMargin, float leftMargin, float rightMargin) {
 		_margins[0] = topMargin;
 		_margins[1] = bottomMargin;
 		_margins[2] = leftMargin;
@@ -141,16 +137,9 @@ public abstract class PDFElement<T extends PDFElement<T>> {
 		return getPDFElement();
 	}
 
-	private static float[] _pageMargins = ArrayUtil.clone(
-		PDFConstants.DEFAULT_DOCUMENT_MARGINS);
+	private static float[] _pageMargins = ArrayUtil.clone(PDFConstants.DEFAULT_DOCUMENT_MARGINS);
 	private static PDRectangle _pageRectangle = PDRectangle.LETTER;
-
 	private float _height = 3f;
-
-	// top, bottom, left, right
-
-	private float[] _margins = ArrayUtil.clone(PDFConstants.DEFAULT_MARGINS);
-
+	private float[] _margins = ArrayUtil.clone(PDFConstants.DEFAULT_MARGINS); 	// top, bottom, left, right
 	private float _width;
-
 }

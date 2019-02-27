@@ -75,12 +75,9 @@ public class PDFContextWriter implements AutoCloseable {
 		return _pdStream.toByteArray();
 	}
 
-	public void write(UnsafeConsumer<PDPageContentStream, IOException> writer)
-		throws IOException {
-
+	public void write(UnsafeConsumer<PDPageContentStream, IOException> writer) throws IOException {
 		if (Objects.isNull(_pdPageContentStream)) {
-			_pdPageContentStream = new PDPageContentStream(
-				_pdDocument, _pdPage);
+			_pdPageContentStream = new PDPageContentStream(_pdDocument, _pdPage);
 		}
 
 		writer.accept(_pdPageContentStream);
@@ -109,13 +106,8 @@ public class PDFContextWriter implements AutoCloseable {
 //		else
 		if (locale.equals(Locale.FRANCE)) {
 			try {
-				fontPair.setFirst(
-					PDType0Font.load(
-					_pdDocument,
-						classLoader.getResourceAsStream(_ARIAL_FONTS)));
-				fontPair.setSecond(PDType0Font.load(
-					_pdDocument,
-					classLoader.getResourceAsStream(_ARIAL_FONTS_BOLD)));
+				fontPair.setFirst(PDType0Font.load(_pdDocument, classLoader.getResourceAsStream(_ARIAL_FONTS)));
+				fontPair.setSecond(PDType0Font.load(_pdDocument, classLoader.getResourceAsStream(_ARIAL_FONTS_BOLD)));
 			}
 			catch (IOException ioe) {
 				_log.error(ioe, ioe);
@@ -129,11 +121,9 @@ public class PDFContextWriter implements AutoCloseable {
 		return fontPair;
 	}
 
-	private static final String _ARIAL_FONTS =
-		"com/lfrgs/pdf/fonts/arial.ttf";
+	private static final String _ARIAL_FONTS = "com/lfrgs/pdf/fonts/arial.ttf";
 
-	private static final String _ARIAL_FONTS_BOLD =
-		"com/lfrgs/pdf/fonts/arialbd.ttf";
+	private static final String _ARIAL_FONTS_BOLD = "com/lfrgs/pdf/fonts/arialbd.ttf";
 
 	private static Log _log = LogFactoryUtil.getLog(PDFContextWriter.class);
 
