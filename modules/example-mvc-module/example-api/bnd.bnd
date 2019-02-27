@@ -1,10 +1,10 @@
-Bundle-Name: example-service-api
-Bundle-SymbolicName: example.service.api
+Bundle-Name: Example API DnD
+Bundle-SymbolicName: example.api.dnd
 Bundle-Version: 1.0.0
-Export-Package:\
-	example.service.exception,\
-	example.service.model,\
-	example.service.service,\
-	example.service.service.persistence
+Export-Package: \
+	com.lfrgs.example.service.dnd.exception,\
+	com.lfrgs.example.service.dnd.model,\
+	com.lfrgs.example.service.dnd,\
+	com.lfrgs.example.service.dnd.persistence
 -check: EXPORTS
--includeresource: META-INF/service.xml=../example-service-service/service.xml
+-includeresource: META-INF/service.xml=../example-service/service.xml

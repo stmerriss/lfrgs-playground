@@ -7,7 +7,7 @@ dependencies {
 }
 
 buildService {
-	apiDir = "../example-service-api/src/main/java"
+	apiDir = "../example-api/src/main/java"
 }
 
-group = "example.service"
+group = "com.lfrgs.example.service.dnd"
