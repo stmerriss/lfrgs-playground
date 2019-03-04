@@ -16,6 +16,7 @@ package com.lfrgs.example.service.dnd.service;
 
 import aQute.bnd.annotation.ProviderType;
 
+import com.lfrgs.example.service.dnd.builder.CharacterBuilder;
 import com.lfrgs.example.service.dnd.model.Character;
 
 import com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery;
@@ -69,6 +70,8 @@ public interface CharacterLocalService extends BaseLocalService,
 	*/
 	@Indexable(type = IndexableType.REINDEX)
 	public Character addCharacter(Character character);
+
+	public Character addCharacter(CharacterBuilder builder);
 
 	/**
 	* Creates a new character with the primary key. Does not add the character to the database.

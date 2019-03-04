@@ -45,6 +45,12 @@ public class CharacterLocalServiceWrapper implements CharacterLocalService,
 		return _characterLocalService.addCharacter(character);
 	}
 
+	@Override
+	public com.lfrgs.example.service.dnd.model.Character addCharacter(
+		com.lfrgs.example.service.dnd.builder.CharacterBuilder builder) {
+		return _characterLocalService.addCharacter(builder);
+	}
+
 	/**
 	* Creates a new character with the primary key. Does not add the character to the database.
 	*

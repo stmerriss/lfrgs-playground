@@ -54,6 +54,11 @@ public class CharacterLocalServiceUtil {
 		return getService().addCharacter(character);
 	}
 
+	public static com.lfrgs.example.service.dnd.model.Character addCharacter(
+		com.lfrgs.example.service.dnd.builder.CharacterBuilder builder) {
+		return getService().addCharacter(builder);
+	}
+
 	/**
 	* Creates a new character with the primary key. Does not add the character to the database.
 	*
