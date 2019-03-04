@@ -5,6 +5,8 @@ Export-Package: \
 	com.lfrgs.example.service.dnd.exception,\
 	com.lfrgs.example.service.dnd.model,\
 	com.lfrgs.example.service.dnd,\
-	com.lfrgs.example.service.dnd.persistence
+	com.lfrgs.example.service.dnd.persistence,\
+	com.lfrgs.example.service.dnd.builder
+
 -check: EXPORTS
 -includeresource: META-INF/service.xml=../example-service/service.xml

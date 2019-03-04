@@ -14,6 +14,8 @@
 
 package com.lfrgs.example.service.dnd.service.impl;
 
+import com.lfrgs.example.service.dnd.builder.CharacterBuilder;
+import com.lfrgs.example.service.dnd.model.Character;
 import com.lfrgs.example.service.dnd.service.base.CharacterLocalServiceBaseImpl;
 
 /**
@@ -36,4 +38,29 @@ public class CharacterLocalServiceImpl extends CharacterLocalServiceBaseImpl {
 	 *
 	 * Never reference this class directly. Always use {@link com.lfrgs.example.service.dnd.service.CharacterLocalServiceUtil} to access the character local service.
 	 */
+
+	public Character addCharacter(CharacterBuilder builder) {
+		long characterId = counterLocalService.increment();
+
+		Character character = createCharacter(characterId);
+
+		character.setCompanyId(builder.getCompanyId());
+		character.setGroupId(builder.getGroupId());
+		character.setUserId(builder.getUserId());
+
+		character.setCharacterClass(builder.getCharacterClass());
+		character.setLevel(builder.getLevel());
+		character.setRace(builder.getRace());
+		character.setCharacterName(builder.getCharacterName());
+		character.setStrength(builder.getStrength());
+		character.setDexterity(builder.getDexterity());
+		character.setConstitution(builder.getConstitution());
+		character.setIntelligence(builder.getIntelligence());
+		character.setWisdom(builder.getWisdom());
+		character.setCharisma(builder.getCharisma());
+		character.setSpeed(builder.getSpeed());
+		character.setHp(builder.getHP());
+
+		return addCharacter(character);
+	}
 }
