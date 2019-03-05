@@ -1,4 +1,0 @@
-Bundle-Name: PDF Generator API
-Bundle-SymbolicName: pdf-generator-api
-Bundle-Version: 1.0.0
-Export-Package: com.lfrgs.pdf.generator.api
