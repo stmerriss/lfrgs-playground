@@ -21,7 +21,7 @@ apply plugin: "com.liferay.workspace"
 println "..:: Liferay Workspace generated from archetype 'wedeploy-dxpcloud-workspace:2.0.0' ::.."
 // END WeDeploy
 
-rootProject.name = 'stm-liferay-dev'
+rootProject.name = 'lfrgs-playground'
 
 // CUSTOM BEGIN
 // Liferay Workspace EE START
